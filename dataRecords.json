@@ -1,0 +1,12 @@
+{
+  "dataRecords": [
+    {
+      "id": "1",
+      "username": "Dilshan Senarath",
+      "personalDetails": "temo",
+      "sicknessDetails": "Doc-0",
+      "drugPrescription": "temp",
+      "labTestPrescription": "temp"
+    }
+  ]
+}

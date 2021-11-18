@@ -1,1 +1,36 @@
-{"patient": [{"username": "Dilshan Senarath", "password": "0f0c6dea7a3b561de985b9edd98a2daf", "userType": "patient", "priviledgeLevel": "patient"}, {"username": "Dilshan", "password": "202cb962ac59075b964b07152d234b70", "userType": "patient", "priviledgeLevel": "patient"}], "hospitalStaff": [{"username": "Kamal Gunarathne", "password": "0f0c6dea7a3b561de985b9edd98a2daf", "userType": "hospitalStaff", "priviledgeLevel": "doctor"}, {"username": "Sahan Fernando", "password": "0f0c6dea7a3b561de985b9edd98a2daf", "userType": "hospitalStaff", "priviledgeLevel": "nurse"}, {"username": "Kumara De Silva", "password": "0f0c6dea7a3b561de985b9edd98a2daf", "userType": "hospitalStaff", "priviledgeLevel": "labStaff"}, {"username": "Gayani Sandaruwani", "password": "0f0c6dea7a3b561de985b9edd98a2daf", "userType": "hospitalStaff", "priviledgeLevel": "pharmacyStaff"}]}
+{
+  "patient": [
+    {
+      "username": "Dilshan Senarath",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "patient",
+      "privilegeLevel": "patient"
+    }
+  ],
+  "hospitalStaff": [
+    {
+      "username": "Kamal Gunarathne",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "doctor"
+    },
+    {
+      "username": "Sahan Fernando",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "nurse"
+    },
+    {
+      "username": "Kumara De Silva",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "labStaff"
+    },
+    {
+      "username": "Gayani Sandaruwani",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "pharmacyStaff"
+    }
+  ]
+}

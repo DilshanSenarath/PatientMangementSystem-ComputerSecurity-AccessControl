@@ -1,6 +1,38 @@
 import hashlib
 import json
 
+readPrivileges = {
+    "patient": ["username","personalDetails","sicknessDetails","drugPrescription","labTestPrescription"],
+    "doctor": ["username","personalDetails","sicknessDetails","drugPrescription","labTestPrescription"],
+    "labStaff": ["username","personalDetails","labTestPrescription"],
+    "pharmacyStaff": ["username","personalDetails","drugPrescription"],
+    "nurse": ["username","personalDetails","sicknessDetails","drugPrescription","labTestPrescription"]
+}
+
+writePrivileges = {
+    "patient": [],
+    "doctor": ["username","personalDetails","sicknessDetails","drugPrescription","labTestPrescription"],
+    "labStaff": [],
+    "pharmacyStaff": [],
+    "nurse": []
+}
+
+editPrivileges = {
+    "patient": [],
+    "doctor": ["personalDetails","sicknessDetails","drugPrescription","labTestPrescription"],
+    "labStaff": [],
+    "pharmacyStaff": [],
+    "nurse": ["personalDetails"]
+}
+
+label = {
+    "username": "User Name",
+    "personalDetails": "Personal Details",
+    "sicknessDetails": "Sickness Details",
+    "drugPrescription": "Drug Prescription",
+    "labTestPrescription": "Lab Test Prescription"
+}
+
 # This funtion will use for hashing the password (MD5)
 def hashPassword(text):
     return hashlib.md5(text.encode("utf-8")).hexdigest()
@@ -25,19 +57,19 @@ def signup(data):
         
         if (data["userType"] == "1"):
             data["userType"] = "patient"
-            data["priviledgeLevel"] = "patient"
+            data["privilegeLevel"] = "patient"
         elif (data["userType"] == "2"):
             data["userType"] = "hospitalStaff"
-            data["priviledgeLevel"] = "doctor"
+            data["privilegeLevel"] = "doctor"
         elif (data["userType"] == "3"):
             data["userType"] = "hospitalStaff"
-            data["priviledgeLevel"] = "labStaff"
+            data["privilegeLevel"] = "labStaff"
         elif (data["userType"] == "4"):
             data["userType"] = "hospitalStaff"
-            data["priviledgeLevel"] = "pharmacyStaff"
+            data["privilegeLevel"] = "pharmacyStaff"
         else:
             data["userType"] = "hospitalStaff"
-            data["priviledgeLevel"] = "nurse"
+            data["privilegeLevel"] = "nurse"
 
         for record in obj[data["userType"]]:
             if (record["username"] == data["username"]):
@@ -76,6 +108,44 @@ def login(data,loginUser):
         except:
             print("\nError: Error with writing to file, try again.")
             return False
+
+# Patient Record Display function
+def displayRecords(loginUser):
+        if (loginUser["privilegeLevel"] == "patient"):
+            data = {"username":loginUser["username"]}
+        else:
+            username = input('Enter the username of the patient: ').strip()
+
+            data = {"username":username}
+            validationResult = validate(data)
+
+            while not validationResult:
+                print("\nError: Validation Error")
+                username = input('Enter the username of the patient: ').strip()
+
+                data = {"username":username}
+                validationResult = validate(data)
+
+        try:
+            config = open('dataRecords.json', 'r')
+            records = json.load(config)["dataRecords"]
+            config.close()
+
+            recordList = []
+            for record in records:
+                if (record["username"] == data["username"]):
+                    recordList.append(record)
+            if (len(recordList) != 0):
+                print("\nPatient Records of " + data["username"])
+                print("------------------------------------------------------")
+                for e in recordList:
+                    print("")
+                    for key in readPrivileges[loginUser["privilegeLevel"]]:
+                        print(label[key] + ": " + e[key])
+            else:
+                print("\nError: No Data")
+        except:
+            print("\nError: Error with writing to file, try again.")
 
 # Sample Views
 
@@ -134,9 +204,51 @@ def renderLoginView(loginUser):
     
     if login(data,loginUser):
         print('\nSuccess: Login successfull')
+        renderDashboardView(loginUser)
     else:
         print('\nError: Login is not successfull')
         renderLoginView(loginUser)
+
+# Dashboard view
+def renderDashboardView(loginUser):
+    print("\nWelcome "+ loginUser["username"])
+    print("------------------------------------------------------")
+
+    print("### View patient records - 1 ###")
+    if (loginUser["privilegeLevel"] == "doctor"):
+        print("### Add a patient record - 2 ###")
+    if (loginUser["privilegeLevel"] == "doctor" and loginUser["privilegeLevel"] == "nurse"):
+        print("### Edit a patient record - 3 ###")
+    print("### Logout From System - 4 ###")
+    code = input('\nEnter the required functionality number: ').strip()
+
+    data = {"function":code}
+    validationResult = validate(data)
+
+    while not validationResult:
+        print("\nError: Validation Error")
+        print("### View patient records - 1 ###")
+        if (loginUser["privilegeLevel"] == "doctor"):
+            print("### Add a patient record - 2 ###")
+        if (loginUser["privilegeLevel"] == "doctor" and loginUser["privilegeLevel"] == "nurse"):
+            print("### Edit a patient record - 3 ###")
+        print("### Logout From System - Press Any Other Key ###")
+        code = input('\nEnter the required functionality number: ').strip()
+
+        data = {"function":code}
+        validationResult = validate(data)
+
+    if (data["function"] == "1"):
+        displayRecords(loginUser)
+    elif (data["function"] == "2"):
+        addNewRecord(loginUser)
+    elif (data["function"] == "3"):
+        editRecord(loginUser)
+    else:
+        logout(loginUser)
+        return
+
+    renderDashboardView(loginUser)
 
 loginUser = []
 renderSignUpView(loginUser)

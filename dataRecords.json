@@ -1,6 +1,15 @@
 {
   "dataRecords": [
     {
+      "id": "1",
+      "username": "Dilshan Senarath",
+      "personalDetails": "Sample personal details",
+      "sicknessDetails": "Doc-0",
+      "drugPrescription": "temp",
+      "labTestPrescription": "temp"
+    },
+    {
+      "id": "2",
       "username": "Dilshan Senarath",
       "personalDetails": "temo",
       "sicknessDetails": "Doc-0",
@@ -8,6 +17,7 @@
       "labTestPrescription": "temp"
     },
     {
+      "id": "3",
       "username": "Dilshan Senarath",
       "personalDetails": "temo",
       "sicknessDetails": "Doc-0",
@@ -15,11 +25,28 @@
       "labTestPrescription": "temp"
     },
     {
-      "username": "Dilshan Senarath",
+      "id": "4",
+      "username": "Udara Karuna",
       "personalDetails": "temo",
       "sicknessDetails": "Doc-0",
       "drugPrescription": "temp",
       "labTestPrescription": "temp"
+    },
+    {
+      "id": "5",
+      "username": "Udara Karuna",
+      "personalDetails": "Male, 23, 43/B, Elpitiya",
+      "sicknessDetails": "Headech",
+      "drugPrescription": "Panadol",
+      "labTestPrescription": "Urin 2.34"
+    },
+    {
+      "id": "6",
+      "username": "Dilshan Senarath",
+      "personalDetails": "Male, 25, 43/M Galle",
+      "sicknessDetails": "Test sickness",
+      "drugPrescription": "Test drugs",
+      "labTestPrescription": "Test lab prescription"
     }
   ]
 }

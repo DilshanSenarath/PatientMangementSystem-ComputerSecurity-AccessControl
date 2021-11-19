@@ -5,6 +5,12 @@
       "password": "0f0c6dea7a3b561de985b9edd98a2daf",
       "userType": "patient",
       "privilegeLevel": "patient"
+    },
+    {
+      "username": "Udara Karuna",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "patient",
+      "privilegeLevel": "patient"
     }
   ],
   "hospitalStaff": [
@@ -31,6 +37,30 @@
       "password": "0f0c6dea7a3b561de985b9edd98a2daf",
       "userType": "hospitalStaff",
       "privilegeLevel": "pharmacyStaff"
+    },
+    {
+      "username": "Rathna Wije",
+      "password": "0f0c6dea7a3b561de985b9edd98a2daf",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "doctor"
+    },
+    {
+      "username": "Gayan Sena",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "labStaff"
+    },
+    {
+      "username": "Rame Rame",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "pharmacyStaff"
+    },
+    {
+      "username": "Yum",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "userType": "hospitalStaff",
+      "privilegeLevel": "nurse"
     }
   ]
 }
